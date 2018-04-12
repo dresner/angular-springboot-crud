@@ -1,0 +1,19 @@
+<h2>Choose an action: </h2>
+<ul>
+    <h3>Add record to collection </h3>
+    <form action="{{ add_url }}" method="POST" name="add_form">
+        Record name:<br>
+        <input type="text" name="name" value=""><br>
+        Artist:<br>
+        <input type="text" name="artist" value=""><br>
+        Year:<br>
+        <input type="text" name="year" value=""><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</ul>
+
+<h2>Current collection: </h2>
+
+<li *ngFor="let record of records">
+    {{record.name}} {{record.artist}} {{record.year}}
+</li>
