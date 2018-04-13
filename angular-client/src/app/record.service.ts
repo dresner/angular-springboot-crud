@@ -10,11 +10,6 @@ export class RecordService {
   private addUrl = 'http://localhost:8080/add';
   private getUrl = 'http://localhost:8080/get';
 
-  records : Record[] = [
-    { name: 'Yellow and Green', artist: 'Baroness', year: 2012 },
-    { name: 'Purple', artist: 'Baroness', year: 2015 }  
-  ];
-
   constructor(private http: HttpClient) { }
 
   getRecords() : Observable<Record[]> {

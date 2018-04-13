@@ -31,10 +31,14 @@ public class Controller {
         return db.add(record);
     }
 
-    // TODO: DELETE shouldn't have a body
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    boolean remove(@RequestBody Record record) {
-        return db.remove(record);
+    @RequestMapping(value = "/update/{recordId}", method = RequestMethod.PUT)
+    boolean update(@PathVariable int recordId, @RequestBody Record record) {
+        return db.update(recordId, record);
+    }
+
+    @RequestMapping(value = "/remove/{recordId}", method = RequestMethod.DELETE)
+    boolean remove(@PathVariable int recordId) {
+        return db.remove(recordId);
     }
 
     public static void main(String[] args) throws Exception {

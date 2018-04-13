@@ -29,8 +29,20 @@ public class Database {
         return this.records.add(r);
     }
 
-    boolean remove(Record r) {
-        return records.remove(r);
+    boolean remove(int recordId) {
+        for(Record r: records)
+            if(r.id == recordId)
+                return records.remove(r);
+        return false;
+    }
+
+    boolean update(int recordId, Record r) {
+        for(Record rr: records)
+            if(rr.id == recordId) {
+                rr.update(r);
+                return true;
+            }
+        return false;
     }
     
     ArrayList<Record> records;
