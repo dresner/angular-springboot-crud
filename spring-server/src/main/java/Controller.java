@@ -1,3 +1,4 @@
+import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.Collection;
 import java.util.Optional;
 import org.springframework.boot.*;
@@ -6,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @EnableAutoConfiguration
+@CrossOrigin(origins = "http://localhost:4200")
 public class Controller {
 
     public Controller () {

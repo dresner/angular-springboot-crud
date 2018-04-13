@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RecordService } from '../record.service';
 import { Record } from './record';
 
 @Component({
@@ -8,16 +9,16 @@ import { Record } from './record';
 })
 
 export class RecordsComponent implements OnInit {
-  add_url = 'http://localhost:8080/add';
+  records : Record[];
 
-  records : Record[] = [
-    { name: 'Yellow and Green', artist: 'Baroness', year: 2012 },
-    { name: 'Purple', artist: 'Baroness', year: 2015 }  
-  ];
-
-  constructor() { }
+  constructor(private recordService: RecordService) { }
 
   ngOnInit() {
+    this.getRecords();
+  }
+
+  getRecords() : void {
+    this.recordService.getRecords().subscribe(records => this.records = records);
   }
 
 }

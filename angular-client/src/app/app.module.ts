@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { RecordsComponent } from './records/records.component';
+import { RecordService } from './record.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -14,9 +16,12 @@ import { RecordsComponent } from './records/records.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    RecordService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
