@@ -27,7 +27,7 @@ public class Controller {
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    boolean add(@RequestBody Record record) {
+    Record add(@RequestBody Record record) {
         return db.add(record);
     }
 

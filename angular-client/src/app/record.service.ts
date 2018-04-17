@@ -7,13 +7,27 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class RecordService {
 
-  private addUrl = 'http://localhost:8080/add';
-  private getUrl = 'http://localhost:8080/get';
+  private url = 'http://localhost:8080'
+  private addUrl = this.url + '/add';
+  private getUrl = this.url + '/get';
+  private deleteUrl = this.url + '/remove/';
+  private updateUrl = this.url + '/update/';
 
   constructor(private http: HttpClient) { }
 
-  getRecords() : Observable<Record[]> {
+  get() : Observable<Record[]> {
       return this.http.get<Record[]>(this.getUrl);
   }
 
+  add(r : Record) : Observable<Record> {
+      return this.http.post<Record>(this.addUrl, r);
+  }
+
+  update(r : Record) : Observable<any> {
+      return this.http.put<Record>(this.updateUrl + r.id.toString(), r);
+  }
+
+  remove(r : Record) : Observable<any> {
+      return this.http.delete(this.deleteUrl + r.id.toString());
+  }
 }

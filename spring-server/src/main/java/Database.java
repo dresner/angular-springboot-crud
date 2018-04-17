@@ -5,6 +5,8 @@ public class Database {
 
     public Database() {
         this.records = new ArrayList<Record>();
+        add(new Record(ids++, "Yellow and Green", "Baroness", 2012));
+        add(new Record(ids++, "Purple", "Baroness", 2015));
     }
 
 	ArrayList<Record> getRecords(Optional<String> name, Optional<String> artist, Optional<Integer> year) {
@@ -25,8 +27,10 @@ public class Database {
 		return ret;
 	}
 
-    boolean add(Record r) {
-        return this.records.add(r);
+    Record add(Record r) {
+        r.id = ids++;
+        this.records.add(r);
+        return r;
     }
 
     boolean remove(int recordId) {
@@ -46,4 +50,6 @@ public class Database {
     }
     
     ArrayList<Record> records;
+
+    private static int ids = 0;
 }

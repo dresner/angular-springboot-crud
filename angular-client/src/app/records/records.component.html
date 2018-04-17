@@ -1,19 +1,30 @@
 <h2>Choose an action: </h2>
 <ul>
     <h3>Add record to collection </h3>
-    <form action="{{ add_url }}" method="POST" name="add_form">
-        Record name:<br>
-        <input type="text" name="name" value=""><br>
-        Artist:<br>
-        <input type="text" name="artist" value=""><br>
-        Year:<br>
-        <input type="text" name="year" value=""><br><br>
-        <input type="submit" value="Submit">
+    <div>
+        Record name:
+        <input #name />
+        Artist:
+        <input #artist />
+        Year:
+        <input #year />
+        <button (click)="add(name.value, artist.value, year.value); name.value=''; artist.value=''; year.value=''"> Submit </button>
+    </div>
+</ul>
+<ul>
+    <h3>Edit selected record {{selectedRecord.name}} {{selectedRecord.artist}} {{selectedRecord.year}} </h3>
+    <form #editForm="ngForm" (ngSubmit)="update(editForm.value)">
+        Record name:
+        <input name="name" [ngModel]="selectedRecord.name" required>
+        Artist:
+        <input name="artist" [ngModel]="selectedRecord.artist" required>
+        Year:
+        <input name="year" [ngModel]="selectedRecord.year" required>
+        <button type="submit">Submit</button>
     </form>
 </ul>
 
 <h2>Current collection: </h2>
-
 <li *ngFor="let record of records">
-    {{record.name}} {{record.artist}} {{record.year}}
+    {{record.name}} {{record.artist}} {{record.year}} <button (click)="selected(record)">Edit</button><button (click)="remove(record)">Remove</button>
 </li>
