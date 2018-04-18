@@ -1,55 +1,15 @@
-import java.util.ArrayList;
-import java.util.Optional;
+package src.main.java;
 
-public class Database {
+import org.springframework.data.repository.CrudRepository;
 
-    public Database() {
-        this.records = new ArrayList<Record>();
-        add(new Record(ids++, "Yellow and Green", "Baroness", 2012));
-        add(new Record(ids++, "Purple", "Baroness", 2015));
-    }
+public interface Database extends CrudRepository<Record, Long> {
 
-	ArrayList<Record> getRecords(Optional<String> name, Optional<String> artist, Optional<Integer> year) {
-        if((!name.isPresent()) && (!artist.isPresent()) && (!year.isPresent()))
-            return records;
+    Iterable<Record> findByName(String name);
+    Iterable<Record> findByArtist(String artist);
+    Iterable<Record> findByYear(int year);
+    Iterable<Record> findByNameAndArtist(String name, String artist);
+    Iterable<Record> findByNameAndYear(String name, int year);
+    Iterable<Record> findByNameAndArtistAndYear(String name, String artist, int year);
+    Iterable<Record> findByArtistAndYear(String artist, int year);
 
-        ArrayList<Record> ret = new ArrayList<Record>();
-        for(Record r: records) {
-            if(name.isPresent() && !(r.name.equals(name.get())))
-                continue;
-            if(artist.isPresent() && !(r.artist.equals(artist.get())))
-                continue;
-            if(year.isPresent() && (r.year != year.get()))
-                continue;
-
-            ret.add(r);
-        }
-		return ret;
-	}
-
-    Record add(Record r) {
-        r.id = ids++;
-        this.records.add(r);
-        return r;
-    }
-
-    boolean remove(int recordId) {
-        for(Record r: records)
-            if(r.id == recordId)
-                return records.remove(r);
-        return false;
-    }
-
-    boolean update(int recordId, Record r) {
-        for(Record rr: records)
-            if(rr.id == recordId) {
-                rr.update(r);
-                return true;
-            }
-        return false;
-    }
-    
-    ArrayList<Record> records;
-
-    private static int ids = 0;
 }

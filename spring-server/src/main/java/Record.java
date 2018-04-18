@@ -1,7 +1,16 @@
+package src.main.java;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Record {
 
-    public Record(int id, String name, String artist, int year) {
-        this.id = id;
+    protected Record() {}
+
+    public Record(String name, String artist, int year) {
         this.name = name;
         this.artist = artist;
         this.year = year;
@@ -13,7 +22,9 @@ public class Record {
         this.year = r.year;
     }
 
-    public int id;
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    public Long id;
     public String name;
     public String artist;
     public int year;
