@@ -18,8 +18,8 @@ public class Controller {
     public Controller() {}
 
     @RequestMapping("/")
-    String home() {
-        return "Hello!";
+    Iterable<Record> home() {
+        return db.findAll();
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
