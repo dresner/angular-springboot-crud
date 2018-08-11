@@ -27,7 +27,6 @@ export class RecordEditComponent implements OnInit {
       record.id = this.selectedRecord.id;
       this.recordsService.update(record);
     }
-    this.recordsService.selectedRecordChanged.next(new Record(undefined, undefined, undefined, undefined));
   }
 
 }

@@ -1,4 +1,2 @@
 <h2>Current collection: </h2>
-<li *ngFor="let record of records">
-    {{record.name}} {{record.artist}} {{record.year}} <button (click)="selected(record)">Edit</button><button (click)="remove(record)">Remove</button>
-</li>
+<app-record-list-item *ngFor="let r of records" [record]="r"></app-record-list-item>

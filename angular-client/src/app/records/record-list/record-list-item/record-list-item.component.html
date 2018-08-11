@@ -1,0 +1,14 @@
+<div (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+  {{record.name}} {{record.artist}} {{record.year}}
+  <span *ngIf="showControls">
+    <button class="btn btn-primary" (click)="onSelect()">
+      <i class="fa fa-pencil"></i>
+    </button>
+    <button class="btn btn-primary" (click)="onCopy()">
+      <i class="fa fa-files-o"></i>
+    </button>
+    <button class="btn btn-danger" (click)="onRemove()">
+      <i class="fa fa-times"></i>
+    </button>
+  </span>
+</div>

@@ -11,24 +11,11 @@ import { Record } from '../record';
 export class RecordListComponent implements OnInit {
 
   records: Record[];
-  selectedRecord: Record;
 
   constructor(private recordsService: RecordsService) {
-    this.recordsService.selectedRecordChanged.subscribe(r => this.selectedRecord = r);
     this.recordsService.recordsChanged.subscribe(rs => this.records = rs);
     this.recordsService.get();
   }
 
   ngOnInit() {}
-
-  selected(r: Record): void {
-    this.recordsService.selectedRecordChanged.next(r);
-  }
-
-  remove(r: Record): void {
-    this.recordsService.remove(r);
-    if (r === this.selectedRecord) {
-      this.recordsService.selectedRecordChanged.next(new Record(undefined, undefined, undefined, undefined));
-    }
-  }
 }

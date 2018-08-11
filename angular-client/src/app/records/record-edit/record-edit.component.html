@@ -8,7 +8,8 @@
         <input #artist />
         Year:
         <input #year />
-        <button (click)="add(name.value, artist.value, year.value); name.value=''; artist.value=''; year.value=''"> Submit </button>
+        <button class="btn btn-primary"
+          (click)="add(name.value, artist.value, year.value); name.value=''; artist.value=''; year.value=''"> Submit </button>
     </div>
 </ul>
 <ul>
@@ -20,6 +21,6 @@
         <input name="artist" [ngModel]="selectedRecord.artist" required>
         Year:
         <input name="year" [ngModel]="selectedRecord.year" required>
-        <button type="submit">Submit</button>
+        <button class="btn btn-primary" type="submit">Submit</button>
     </form>
 </ul>

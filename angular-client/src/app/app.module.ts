@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { RecordEditComponent } from './records/record-edit/record-edit.component';
 import { RecordListComponent } from './records/record-list/record-list.component';
+import { RecordListItemComponent } from './records/record-list/record-list-item/record-list-item.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { RecordListComponent } from './records/record-list/record-list.component
     RecordsComponent,
     HeaderComponent,
     RecordEditComponent,
-    RecordListComponent
+    RecordListComponent,
+    RecordListItemComponent
   ],
   imports: [
     BrowserModule,
