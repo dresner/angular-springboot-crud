@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Record } from './records/record';
-import { of } from 'rxjs/observable/of';
-import { Observable } from 'rxjs/Observable';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class RecordService {

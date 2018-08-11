@@ -1,9 +1,9 @@
-Angular + Spring Boot CRUD
+Record Collection CRUD
 ==========================
 
 Music record collection CRUD for learning purposes, with:
 
-* TypeScript client with Angular 4
+* TypeScript client with Angular 6
 * Java server with Spring Boot 2.0.1
     * Persistence with MySQL
 
@@ -22,5 +22,5 @@ mvn spring-boot:run
 To run the client:
 ```
 cd angular-client
-ng server --open
+ng serve --open
 ```
