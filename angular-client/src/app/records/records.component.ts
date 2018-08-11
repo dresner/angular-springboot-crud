@@ -9,38 +9,38 @@ import { Record } from './record';
 })
 
 export class RecordsComponent implements OnInit {
-  records : Record[];
-  selectedRecord : Record;
+  records: Record[];
+  selectedRecord: Record;
 
-  constructor(private recordService: RecordService) { 
-    this.selectedRecord = {id:undefined, name:undefined, artist:undefined, year:undefined}
+  constructor(private recordService: RecordService) {
+    this.selectedRecord = {id: undefined, name: undefined, artist: undefined, year: undefined};
   }
 
   ngOnInit() {
     this.getRecords();
   }
 
-  getRecords() : void {
+  getRecords(): void {
     this.recordService.get().subscribe(records => this.records = records);
   }
 
-  add(name : string, artist : string, year : number) : void {
-    this.recordService.add({'id':0, 'name':name, 'artist':artist, 'year':year}).subscribe(record => this.records.push(record));
+  add(name: string, artist: string, year: number): void {
+    this.recordService.add({'id': 0, 'name': name, 'artist': artist, 'year': year}).subscribe(record => this.records.push(record));
   }
 
-  update(record : Record) : void {
-    if(this.selectedRecord.id !== undefined) {
+  update(record: Record): void {
+    if (this.selectedRecord.id !== undefined) {
       record.id = this.selectedRecord.id;
-      this.recordService.update(record).subscribe(record => this.getRecords() );
+      this.recordService.update(record).subscribe(() => this.getRecords());
     }
-    this.selectedRecord = {id:undefined, name:undefined, artist:undefined, year:undefined}
+    this.selectedRecord = {id: undefined, name: undefined, artist: undefined, year: undefined};
   }
 
-  selected(r : Record) : void {
+  selected(r: Record): void {
     this.selectedRecord = r;
   }
 
-  remove(r : Record) : void {
+  remove(r: Record): void {
     this.recordService.remove(r).subscribe(record => this.getRecords());
   }
 }
