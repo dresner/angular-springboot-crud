@@ -5,14 +5,20 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { RecordsComponent } from './records/records.component';
-import { RecordService } from './record.service';
+import { RecordsService } from './records/records.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
+import { RecordEditComponent } from './records/record-edit/record-edit.component';
+import { RecordListComponent } from './records/record-list/record-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecordsComponent
+    RecordsComponent,
+    HeaderComponent,
+    RecordEditComponent,
+    RecordListComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
-    RecordService
+    RecordsService
   ],
   bootstrap: [AppComponent]
 })

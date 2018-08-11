@@ -1,6 +1,7 @@
 export class Record {
-  id: number;
-  name: string;
-  artist: string;
-  year: number;
+  constructor(public id: number,
+              public name: string,
+              public artist: string,
+              public year: number) {
+  }
 }
